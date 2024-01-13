@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <br><center><h2>Login here</h2></center><br><br>
+        {% if messages %}
+            <div class="container alert alert-danger" role="alert">
+                {% for message in messages %}
+                 <h4>{{ message }}</h4>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="container jumbotron" style="width: 430px; margin: auto">
+            <div class="form-group">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="username" class="form-control" required><br>
+                    <input type="password" name="password" placeholder="password" class="form-control" required><br>
+                    <button type="submit" class="btn btn-outline-primary">Login</button>
+                </form><br>
+            </div>
+        </div>
+
+{% endblock %}

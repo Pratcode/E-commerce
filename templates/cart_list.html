@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div style="text-align: center;"><h2 class="">Cart</h2></div>
+    <div class="container jumbotron" style="width: 400px">
+        {% if obj_cart %}
+            {% for x in obj_cart %}
+                <h4 class="border-secondary">Item: {{ x.id }} {{ x.product_item }}</h4>
+                    <form action="{% url 'delete' x.id %}" method="post">
+                         {% csrf_token %}
+                         <button type="submit" class="btn btn-outline-primary">delete</button><br><br>
+                    </form>
+            {% endfor %}
+        {% else %}
+            <div style="text-align: center;"><h3>Cart is empty</h3></div>
+        {% endif %}
+    </div>
+{% endblock %}
